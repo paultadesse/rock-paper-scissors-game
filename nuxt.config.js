@@ -1,5 +1,9 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  tailwindcss: {
+    configPath: 'tailwind.config.js',
+  },
+
   head: {
     title: 'rock-paper-scissors',
     htmlAttrs: {

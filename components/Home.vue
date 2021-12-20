@@ -1,6 +1,6 @@
 <template lang="">
-  <div>
-    <div>Home Page.</div>
+  <div class="">
+
   </div>
 </template>
 <script>
