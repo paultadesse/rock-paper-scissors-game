@@ -21,80 +21,110 @@
         </div>
       </div>
     </div>
-    <div
-      v-if="!gameStarted"
-      class="relative xl:mt-40 mt-20 max-w-xs mx-auto flex justify-center"
+    <transition
+              duration="200"
+              enter-class="transform -translate-x-0 opacity-0 scale-0"
+              enter-to-class="transform translate-x-0 opacity-90 scale-100"
+              leave-class="transform -translate-x-0 opacity-0"
+              leave-to-class="transform -translate-x-0 opacity-0"
+              enter-active-class="transition"
+              leave-active-class="transition"
+              mode="out-in"
     >
-      <!-- paper  -->
       <div
-        class="absolute xl:-left-20 xl:-top-28 -left-7 -top-10"
-        @click="pickComponent('Paper')"
+        :key="gameStarted"
+        v-if="!gameStarted"
+        class="relative xl:mt-40 mt-20 max-w-xs mx-auto flex justify-center"
       >
-        <Paper />
-      </div>
-
-      <!-- scissors -->
-      <div
-        class="absolute xl:-right-20 xl:-top-28 right-0 -top-10"
-        @click="pickComponent('Scissor')"
-      >
-        <Scissor />
-      </div>
-
-      <!-- rock -->
-      <div
-        class="absolute xl:-bottom-28 -bottom-10"
-        @click="pickComponent('Rock')"
-      >
-        <Rock />
-      </div>
-
-      <div class="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="305" height="277">
-          <path
-            fill="none"
-            stroke="#000"
-            stroke-width="15"
-            d="M291.5 7.5H4.574c3.119 0 52.416 84.667 147.892 254L291.5 7.5z"
-            opacity=".2"
-          />
-        </svg>
-      </div>
-    </div>
-
-    <div v-if="gameStarted" class="xl:pt-28 pt-10 -ml-5 xl:ml-0">
-      <div class="flex justify-center xl:space-x-72">
-        <component
-          :is="userPicked"
-          :showAnimation="winner === 'user'"
-          :picker="'you picked'"
-        ></component>
-        <div class="xl:hidden px-8"></div>
+        <!-- paper  -->
         <div
-          class="hidden xl:block text-white font-bold tracking-wider xl:text-2xl uppercase"
+          class="absolute xl:-left-20 xl:-top-28 -left-7 -top-10"
+          @click="pickComponent('Paper')"
         >
-          <div v-if="itsAtie" class="py-4 text-5xl">it's a tie</div>
-          <div v-else>
-            <div v-if="winner === 'house'" class="py-4 text-5xl">You Lose</div>
-            <div v-if="winner === 'user'" class="py-4 text-5xl">You win</div>
-          </div>
-          <button
-            class="bg-white text-black px-16 rounded py-3 tracking-widest uppercase text-sm"
-            @click="restartGame"
-          >
-            Play again
-          </button>
+          <Paper />
         </div>
-        <component
-          :is="housePicked"
-          :showAnimation="winner === 'house'"
-          :picker="'the house picked'"
-        ></component>
-      </div>
-    </div>
 
+        <!-- scissors -->
+        <div
+          class="absolute xl:-right-20 xl:-top-28 right-0 -top-10"
+          @click="pickComponent('Scissor')"
+        >
+          <Scissor />
+        </div>
+
+        <!-- rock -->
+        <div
+          class="absolute xl:-bottom-28 -bottom-10"
+          @click="pickComponent('Rock')"
+        >
+          <Rock />
+        </div>
+
+        <div class="">
+          <svg xmlns="http://www.w3.org/2000/svg" width="305" height="277">
+            <path
+              fill="none"
+              stroke="#000"
+              stroke-width="15"
+              d="M291.5 7.5H4.574c3.119 0 52.416 84.667 147.892 254L291.5 7.5z"
+              opacity=".2"
+            />
+          </svg>
+        </div>
+      </div>
+    </transition>
+
+    <transition
+      duration="200"
+              enter-class="transform -translate-x-0 opacity-0 scale-0"
+              enter-to-class="transform translate-x-0 opacity-90 scale-100"
+              leave-class="transform -translate-x-0 opacity-0"
+              leave-to-class="transform -translate-x-0 opacity-0"
+              enter-active-class="transition"
+              leave-active-class="transition"
+              mode="out-in"
+    >
+      <div
+        :key="gameStarted"
+        v-if="gameStarted"
+        class="xl:pt-28 pt-10 -ml-5 xl:ml-0"
+      >
+        <div class="flex justify-center xl:space-x-72">
+          <component
+            :is="userPicked"
+            :showAnimation="winner === 'user'"
+            :picker="'you picked'"
+          ></component>
+          <div class="xl:hidden px-8"></div>
+          <div
+            class="hidden xl:block text-white font-bold tracking-wider xl:text-2xl uppercase"
+          >
+            <div v-if="itsAtie" class="py-4 text-5xl">it's a tie</div>
+            <div v-else>
+              <div v-if="winner === 'house'" class="py-4 text-5xl">
+                You Lose
+              </div>
+              <div v-if="winner === 'user'" class="py-4 text-5xl">You win</div>
+            </div>
+            <button
+              class="bg-white text-black px-16 rounded py-3 tracking-widest uppercase hover:text-red-700 text-sm"
+              @click="restartGame"
+            >
+              Play again
+            </button>
+          </div>
+          <component
+            :is="housePicked"
+            :showAnimation="winner === 'house'"
+            :picker="'the house picked'"
+          ></component>
+        </div>
+      </div>
+    </transition>
     <div v-if="gameStarted" class="flex justify-center pt-6">
-      <div class="xl:hidden text-white font-bold tracking-wider xl:text-2xl uppercase">
+      <div
+        class="xl:hidden text-white font-bold tracking-wider xl:text-2xl uppercase"
+      >
         <div v-if="itsAtie" class="py-4 text-5xl">it's a tie</div>
         <div v-else>
           <div v-if="winner === 'house'" class="py-4 text-5xl">You Lose</div>
