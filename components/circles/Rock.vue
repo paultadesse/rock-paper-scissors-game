@@ -17,13 +17,13 @@
 
           <div v-if="showAnimation" class="animate-pulse overflow-clip">
             <div
-              class="absolute xl:-left-20 -left-14 opacity-5 xl:-top-24 -top-16 xl:h-96 xl:w-96 h-72 w-72 bg-white rounded-full"
+              class="absolute xl:-left-20 -left-14 opacity-10 xl:-top-24 -top-16 xl:h-96 xl:w-96 h-72 w-72 bg-white rounded-full"
             ></div>
             <div
-              class="absolute xl:-left-12 -left-8 opacity-5 xl:-top-16 -top-11 xl:h-80 xl:w-80 h-60 w-60 bg-white rounded-full"
+              class="absolute xl:-left-12 -left-8 opacity-10 xl:-top-16 -top-11 xl:h-80 xl:w-80 h-60 w-60 bg-white rounded-full"
             ></div>
             <div
-              class="absolute xl:-left-4 -left-2 opacity-5 xl:-top-8 -top-4 xl:h-64 xl:w-64 h-48 w-48 bg-white rounded-full"
+              class="absolute xl:-left-4 -left-2 opacity-10 xl:-top-8 -top-4 xl:h-64 xl:w-64 h-48 w-48 bg-white rounded-full"
             ></div>
           </div>
           <div

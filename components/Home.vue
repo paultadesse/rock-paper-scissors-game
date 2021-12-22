@@ -22,14 +22,14 @@
       </div>
     </div>
     <transition
-              duration="200"
-              enter-class="transform -translate-x-0 opacity-0 scale-0"
-              enter-to-class="transform translate-x-0 opacity-90 scale-100"
-              leave-class="transform -translate-x-0 opacity-0"
-              leave-to-class="transform -translate-x-0 opacity-0"
-              enter-active-class="transition"
-              leave-active-class="transition"
-              mode="out-in"
+      duration="200"
+      enter-class="transform -translate-x-0 opacity-0 scale-0"
+      enter-to-class="transform translate-x-0 opacity-90 scale-100"
+      leave-class="transform -translate-x-0 opacity-0"
+      leave-to-class="transform -translate-x-0 opacity-0"
+      enter-active-class="transition"
+      leave-active-class="transition"
+      mode="out-in"
     >
       <div
         :key="gameStarted"
@@ -76,20 +76,20 @@
 
     <transition
       duration="200"
-              enter-class="transform -translate-x-0 opacity-0 scale-0"
-              enter-to-class="transform translate-x-0 opacity-90 scale-100"
-              leave-class="transform -translate-x-0 opacity-0"
-              leave-to-class="transform -translate-x-0 opacity-0"
-              enter-active-class="transition"
-              leave-active-class="transition"
-              mode="out-in"
+      enter-class="transform -translate-x-0 opacity-0 scale-0"
+      enter-to-class="transform translate-x-0 opacity-90 scale-100"
+      leave-class="transform -translate-x-0 opacity-0"
+      leave-to-class="transform -translate-x-0 opacity-0"
+      enter-active-class="transition"
+      leave-active-class="transition"
+      mode="out-in"
     >
       <div
         :key="gameStarted"
         v-if="gameStarted"
         class="xl:pt-28 pt-10 -ml-5 xl:ml-0"
       >
-        <div class="flex justify-center xl:space-x-72">
+        <div class="flex justify-center items-center xl:space-x-72">
           <component
             :is="userPicked"
             :showAnimation="winner === 'user'"
