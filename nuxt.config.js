@@ -4,6 +4,15 @@ export default {
     configPath: 'tailwind.config.js',
   },
 
+  googleFonts: {
+    display: 'swap',
+    families: {
+      'Barlow Condensed': {
+        wght: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      },
+    },
+  },
+
   head: {
     title: 'rock-paper-scissors',
     htmlAttrs: {
@@ -34,6 +43,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
+    '@nuxtjs/google-fonts',
     '@nuxtjs/tailwindcss',
   ],
 

@@ -1,6 +1,6 @@
 <template lang="">
   <div
-    class="relative min-h-screen h-0 bg-gradient-to-b from-blueDark to-blueDarker"
+    class="relative min-h-screen h-0 bg-gradient-to-b from-blueDark to-blueDarker font-BarlowCondensed"
   >
     <div class="w-full xl:pt-20 pt-10 p-8">
       <div
@@ -9,9 +9,12 @@
         <div
           class="text-white uppercase xl:text-4xl font-bold tracking-tighter"
         >
-          <div>rock</div>
-          <div>paper</div>
-          <div>scissors</div>
+          <img
+            class="h-20 xl:h-full"
+            src="../static/images/logo.svg"
+            alt=""
+            srcset=""
+          />
         </div>
 
         <div
@@ -122,7 +125,7 @@
           ></component>
           <div class="xl:hidden px-8"></div>
           <div
-            class="hidden xl:block text-white font-bold tracking-wider xl:text-2xl uppercase"
+            class="hidden xl:flex flex-col text-center items-center text-white font-bold tracking-wider xl:text-2xl uppercase"
           >
             <div v-if="itsAtie" class="py-4 text-5xl">it's a tie</div>
             <div v-else>
@@ -132,7 +135,7 @@
               <div v-if="winner === 'user'" class="py-4 text-5xl">You win</div>
             </div>
             <button
-              class="bg-white text-black px-16 rounded py-3 tracking-widest uppercase hover:text-red-700 text-sm"
+              class="bg-white text-black px-16 rounded py-3 tracking-widest uppercase hover:text-red-700 text-md"
               @click="restartGame"
             >
               Play again
@@ -148,7 +151,7 @@
     </transition>
     <div v-if="gameStarted" class="flex justify-center pt-16">
       <div
-        class="xl:hidden text-white font-bold tracking-wider xl:text-2xl uppercase"
+        class="xl:hidden flex flex-col text-center items-center text-white font-bold tracking-wider xl:text-2xl uppercase"
       >
         <div v-if="itsAtie" class="py-4 text-5xl">it's a tie</div>
         <div v-else>
@@ -165,15 +168,15 @@
     </div>
 
     <div class="absolute w-full xl:bottom-10 bottom-10">
-      <div class="flex justify-between px-10">
+      <div class="flex justify-between xl:px-10 px-5">
         <button
-          class="border border-white px-10 py-2 block text-white rounded-lg text-sm uppercase"
+          class="border hover:bg-white hover:text-black transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-200 border-white px-10 py-2 block text-white rounded-lg xl:text-sm text-sm tracking-widest uppercase"
         >
           Advanced
         </button>
 
         <button
-          class="border border-white px-10 py-2 block text-white rounded-lg text-sm uppercase"
+          class="border hover:bg-white hover:text-black transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-200 border-white px-10 py-2 block text-white rounded-lg xl:text-sm text-sm tracking-widest uppercase"
         >
           Rules
         </button>

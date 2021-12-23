@@ -21,6 +21,9 @@ module.exports = {
         scissorDarker: "#eca922",
       },
     },
+    fontFamily: {
+      BarlowCondensed: ["Barlow Condensed"],
+    },
   },
   variants: {
     extend: {},
