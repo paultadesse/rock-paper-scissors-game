@@ -20,9 +20,9 @@
               ? 'bg-rockDark text-white'
               : score > 0
               ? 'bg-green-600 text-white'
-              : ''
+              : 'bg-white'
           "
-          class="uppercase text-center bg-white p-3 px-7 rounded-lg"
+          class="uppercase text-center p-3 px-7 rounded-lg"
         >
           <div class="text-sm tracking-widest">score</div>
           <transition
@@ -164,8 +164,14 @@
       </div>
     </div>
 
-    <div class="absolute w-full xl:bottom-10 bottom-10 xl:right-10">
-      <div class="flex xl:justify-end justify-center">
+    <div class="absolute w-full xl:bottom-10 bottom-10">
+      <div class="flex justify-between px-10">
+        <button
+          class="border border-white px-10 py-2 block text-white rounded-lg text-sm uppercase"
+        >
+          Advanced
+        </button>
+
         <button
           class="border border-white px-10 py-2 block text-white rounded-lg text-sm uppercase"
         >
@@ -203,6 +209,9 @@ export default {
         { value: "Scissor", beats: ["Paper"] },
       ],
     };
+  },
+  created() {
+    this.score = 0;
   },
 
   methods: {
