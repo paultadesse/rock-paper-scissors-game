@@ -13,11 +13,36 @@
           <div>paper</div>
           <div>scissors</div>
         </div>
-        <div>
-          <div class="uppercase text-center bg-white p-3 px-7 rounded-lg">
-            <div class="text-sm tracking-widest">score</div>
-            <div class="text-5xl font-extrabold">12</div>
-          </div>
+
+        <div
+          :class="
+            score < 0
+              ? 'bg-rockDark text-white'
+              : score > 0
+              ? 'bg-green-600 text-white'
+              : ''
+          "
+          class="uppercase text-center bg-white p-3 px-7 rounded-lg"
+        >
+          <div class="text-sm tracking-widest">score</div>
+          <transition
+            duration="200"
+            enter-class="transform -translate-x-0 opacity-0 scale-0"
+            enter-to-class="transform translate-x-0 opacity-90 scale-100"
+            leave-class="transform -translate-x-0 opacity-0"
+            leave-to-class="transform -translate-x-0 opacity-0"
+            enter-active-class="transition"
+            leave-active-class="transition"
+            mode="out-in"
+          >
+            <div
+              :key="score"
+              :class="score < 0 ? '-ml-3' : ''"
+              class="text-5xl font-extrabold"
+            >
+              {{ score }}
+            </div>
+          </transition>
         </div>
       </div>
     </div>
@@ -163,6 +188,7 @@ export default {
 
   data() {
     return {
+      score: 0,
       userPicked: null,
       housePicked: null,
       gameStarted: false,
@@ -186,6 +212,8 @@ export default {
       this.housePicked = this.getRandomComponent();
 
       this.checkTheWinner(this.userPicked, this.housePicked);
+
+      this.updateScore(this.winner);
     },
 
     restartGame() {
@@ -230,6 +258,18 @@ export default {
       return this.components[
         Math.floor(Math.random() * this.components.length)
       ];
+    },
+
+    updateScore(winner) {
+      switch (winner) {
+        case "user":
+          this.score += 5;
+          break;
+        case "house":
+          this.score -= 5;
+        default:
+          break;
+      }
     },
   },
 };
