@@ -149,6 +149,7 @@
         </div>
       </div>
     </transition>
+
     <div v-if="gameStarted" class="flex justify-center pt-16">
       <div
         class="xl:hidden flex flex-col text-center items-center text-white font-bold tracking-wider xl:text-2xl uppercase"
@@ -167,16 +168,58 @@
       </div>
     </div>
 
+    <!-- rules for gameplay -->
+    <div v-if="showRules" class="">
+      <div  class="absolute inset-0 opacity-50 h-screen w-full bg-black"></div>
+      <div  class="absolute inset-0 ">
+        <div class="">
+          <div class="flex justify-center">
+            <div
+              class="absolute top-1/3 bg-white xl:max-w-sm z-50 p-10 rounded-xl"
+            >
+              <div class="flex justify-between items-center pb-7">
+                <div class="uppercase text-3xl font-bold">rules</div>
+                <div class="cursor-pointer">
+                  <svg
+                    @click="showRules = !showRules"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-7 w-7 text-gray-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <img
+                class="h-52 xl:h-full"
+                src="../static/images/image-rules.svg"
+                alt=""
+                srcset=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="absolute w-full xl:bottom-10 bottom-10">
       <div class="flex justify-between xl:px-10 px-5">
         <button
-          class="border hover:bg-white hover:text-black transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-200 border-white px-10 py-2 block text-white rounded-lg xl:text-sm text-sm tracking-widest uppercase"
+          class="border hover:bg-white hover:text-black transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200 border-white px-10 py-2 block text-white rounded-lg xl:text-sm text-sm tracking-widest uppercase"
         >
           Advanced
         </button>
 
         <button
-          class="border hover:bg-white hover:text-black transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-200 border-white px-10 py-2 block text-white rounded-lg xl:text-sm text-sm tracking-widest uppercase"
+          @click="showRules = !showRules"
+          class="border hover:bg-white hover:text-black transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200 border-white px-10 py-2 block text-white rounded-lg xl:text-sm text-sm tracking-widest uppercase"
         >
           Rules
         </button>
@@ -198,6 +241,7 @@ export default {
   data() {
     return {
       score: 0,
+      showRules: false,
       userPicked: null,
       housePicked: null,
       gameStarted: false,
