@@ -59,7 +59,7 @@
       <div
         :key="gameStarted"
         v-if="!gameStarted"
-        class="relative xl:mt-40 mt-20 max-w-xs mx-auto flex justify-center"
+        class="relative xl:mt-40 mt-28 max-w-xs mx-auto flex justify-center"
       >
         <!-- paper  -->
         <div
@@ -112,7 +112,7 @@
       <div
         :key="gameStarted"
         v-if="gameStarted"
-        class="xl:pt-28 pt-10 -ml-5 xl:ml-0"
+        class="xl:pt-28 pt-14 -ml-5 xl:ml-0"
       >
         <div class="flex justify-center items-center xl:space-x-72">
           <component
@@ -146,7 +146,7 @@
         </div>
       </div>
     </transition>
-    <div v-if="gameStarted" class="flex justify-center pt-6">
+    <div v-if="gameStarted" class="flex justify-center pt-16">
       <div
         class="xl:hidden text-white font-bold tracking-wider xl:text-2xl uppercase"
       >
