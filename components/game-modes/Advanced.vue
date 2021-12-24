@@ -27,7 +27,7 @@
           "
           class="uppercase text-center p-3 px-7 rounded-lg"
         >
-          <div class="text-sm tracking-widest">score</div>
+          <div class="text-sm tracking-widest">score advanced</div>
           <transition
             duration="200"
             enter-class="transform -translate-x-0 opacity-0 scale-0"

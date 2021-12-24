@@ -30,7 +30,8 @@
               </div>
               <img
                 class="h-52 xl:h-full"
-                src="../../static/images/image-rules.svg"
+                :src="ruleFor === 'easy' ? advanced : easy"
+                :key="ruleFor"
                 alt=""
                 srcset=""
               />
@@ -42,14 +43,20 @@
   </div>
 </template>
 <script>
+import easyRule from "../../static/images/image-rules.svg";
+import advancedRule from "../../static/images/image-rules-bonus.svg";
 export default {
   props: {
+    ruleFor: String,
     methods: {
       type: Function,
     },
   },
   data() {
-    return {};
+    return {
+      easy: easyRule,
+      advanced: advancedRule,
+    };
   },
 
   created() {},

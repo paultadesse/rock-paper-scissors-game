@@ -1,42 +1,57 @@
 <template lang="">
   <div>
-    <!-- <Easy /> -->
+    <!-- Initial the game is set to easy mode ! -->
     <component :is="selectedMode">
-      <button
-        class="border hover:bg-white hover:text-black transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200 border-white px-10 py-2 block text-white rounded-lg xl:text-sm text-sm tracking-widest uppercase"
-      >
-        Advanced
-      </button>
-
-      <button
-        @click="showRules = !showRules"
-        class="border hover:bg-white hover:text-black transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200 border-white px-10 py-2 block text-white rounded-lg xl:text-sm text-sm tracking-widest uppercase"
-      >
-        Rules
-      </button>
+      <GameModeAndRuleButtons
+        @toggle-modal="showModal"
+        @switch-game-mode="changeGameMode(selectButton)"
+        :mode="selectButton"
+      />
     </component>
     <div v-if="showRules">
-      <RuleModal @toggle-modal="showModal" />
+      <RuleModal @toggle-modal="showModal" :ruleFor="selectButton" />
     </div>
   </div>
 </template>
 <script>
 import RuleModal from "./modals/RuleModal.vue";
 import Easy from "./game-modes/Easy.vue";
+import Advanced from "./game-modes/Advanced.vue";
+import GameModeAndRuleButtons from "./buttons/GameModeAndRuleButtons.vue";
 export default {
   components: {
     Easy: Easy,
+    Advanced: Advanced,
     RuleModal,
+    GameModeAndRuleButtons,
   },
 
   data() {
     return {
       selectedMode: Easy,
       showRules: false,
+      selectButton: "advanced",
     };
   },
 
   methods: {
+    changeGameMode(selected) {
+      switch (selected) {
+        case "advanced":
+          this.selectedMode = Advanced;
+          this.selectButton = "easy";
+          break;
+        case "easy":
+          this.selectedMode = Easy;
+          this.selectButton = "advanced";
+          break;
+
+        default:
+          break;
+      }
+      this.selectedMode = selected;
+    },
+
     showModal() {
       this.showRules = !this.showRules;
     },
