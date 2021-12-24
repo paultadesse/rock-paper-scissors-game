@@ -32,12 +32,11 @@
           ></div>
           <div
             class="absolute xl:left-8 xl:top-4 left-8 top-4 xl:h-40 xl:w-40 h-28 w-28 bg-white rounded-full"
-          ></div>
-          <div class="absolute"></div>
-          <div class="absolute"></div>
-          <div class="absolute inset-0">
-            <div class="absolute xl:top-16 xl:left-20 top-10 left-14 ml-2">
-                <img src="../../static/images/icon-lizard.svg" alt="" srcset="">
+          >
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
+              <img src="../../static/images/icon-lizard.svg" alt="" srcset="" />
             </div>
           </div>
         </div>
