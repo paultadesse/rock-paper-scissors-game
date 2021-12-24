@@ -19,6 +19,10 @@ module.exports = {
         paperDarker: "#5671f5",
         scissorDark: "#ec9e0e",
         scissorDarker: "#eca922",
+        lizardDark: "#834fe3",
+        lizardDarker: "#8c5de5",
+        spockDark: "#40b9ce",
+        spockDarker: "#52bed1",
       },
     },
     fontFamily: {

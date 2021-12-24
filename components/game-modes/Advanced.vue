@@ -4,14 +4,14 @@
   >
     <div class="w-full xl:pt-20 pt-10 p-8">
       <div
-        class="flex items-center xl:p-7 p-4 justify-between border-2 border-gray-500 rounded-lg max-w-2xl mx-auto"
+        class="flex items-center xl:p-5 p-4 justify-between border-2 border-gray-500 rounded-lg max-w-2xl mx-auto"
       >
         <div
           class="text-white uppercase xl:text-4xl font-bold tracking-tighter"
         >
           <img
-            class="h-20 xl:h-full"
-            src="../../static/images/logo.svg"
+            class="h-24 xl:h-full"
+            src="../../static/images/logo-bonus.svg"
             alt=""
             srcset=""
           />
@@ -27,7 +27,7 @@
           "
           class="uppercase text-center p-3 px-7 rounded-lg"
         >
-          <div class="text-sm tracking-widest">score advanced</div>
+          <div class="text-sm tracking-widest">score</div>
           <transition
             duration="200"
             enter-class="transform -translate-x-0 opacity-0 scale-0"
@@ -64,40 +64,48 @@
         v-if="!gameStarted"
         class="relative xl:mt-40 mt-28 max-w-xs mx-auto flex justify-center"
       >
-        <!-- paper  -->
-        <div
-          class="absolute xl:-left-20 xl:-top-28 -left-7 -top-10"
-          @click="pickComponent('Paper')"
-        >
-          <Paper />
-        </div>
-
         <!-- scissors -->
         <div
-          class="absolute xl:-right-20 xl:-top-28 right-0 -top-10"
+          class="absolute xl:left-10 xl:-top-48 left-16 -top-24"
           @click="pickComponent('Scissor')"
         >
           <Scissor />
         </div>
 
+        <!-- spock -->
+        <div
+          class="absolute xl:-left-40 xl:-top-10 -left-14 top-10"
+          @click="pickComponent('Spock')"
+        >
+          <Spock />
+        </div>
+
+        <!-- paper  -->
+        <div
+          class="absolute xl:-right-32 xl:-top-10 -right-5 top-10"
+          @click="pickComponent('Paper')"
+        >
+          <Paper />
+        </div>
+
         <!-- rock -->
         <div
-          class="absolute xl:-bottom-28 -bottom-10"
+          class="absolute xl:-bottom-44 -bottom-24 left-44"
           @click="pickComponent('Rock')"
         >
           <Rock />
         </div>
 
+        <!-- lizard -->
+        <div
+          class="absolute xl:-bottom-44 xl:-left-20 -left-5 -bottom-24"
+          @click="pickComponent('Lizard')"
+        >
+          <Lizard />
+        </div>
+
         <div class="">
-          <svg xmlns="http://www.w3.org/2000/svg" width="305" height="277">
-            <path
-              fill="none"
-              stroke="#000"
-              stroke-width="15"
-              d="M291.5 7.5H4.574c3.119 0 52.416 84.667 147.892 254L291.5 7.5z"
-              opacity=".2"
-            />
-          </svg>
+          <img src="../../static/images/bg-pentagon.svg" alt="" srcset="" />
         </div>
       </div>
     </transition>
@@ -180,11 +188,15 @@
 import Paper from "../circles/Paper.vue";
 import Rock from "../circles/Rock.vue";
 import Scissor from "../circles/Scissor.vue";
+import Lizard from "../circles/Lizard.vue";
+import Spock from "../circles/Spock.vue";
 export default {
   components: {
     Paper: Paper,
     Rock: Rock,
     Scissor: Scissor,
+    Lizard: Lizard,
+    Spock: Spock,
   },
 
   data() {
@@ -196,13 +208,15 @@ export default {
       gameStarted: false,
       winner: "",
       itsAtie: false,
-      components: ["Paper", "Scissor", "Rock"],
+      components: ["Paper", "Scissor", "Rock", "Lizard", "Spock"],
 
       //might put it in a separate js file for advanced mode...
       gameRule: [
-        { value: "Rock", beats: ["Scissor"] },
-        { value: "Paper", beats: ["Rock"] },
-        { value: "Scissor", beats: ["Paper"] },
+        { value: "Rock", beats: ["Scissor", "Lizard"] },
+        { value: "Paper", beats: ["Rock", "Spock"] },
+        { value: "Scissor", beats: ["Paper", "Lizard"] },
+        { value: "Lizard", beats: ["Paper", "Spock"] },
+        { value: "Spock", beats: ["Rock", "Scissor"] },
       ],
     };
   },
@@ -249,6 +263,20 @@ export default {
         }
         case "Scissor": {
           const result = this.gameRule.find(({ value }) => value === "Scissor");
+          result.beats.includes(house)
+            ? (this.winner = "user")
+            : (this.winner = "house");
+          break;
+        }
+        case "Lizard": {
+          const result = this.gameRule.find(({ value }) => value === "Lizard");
+          result.beats.includes(house)
+            ? (this.winner = "user")
+            : (this.winner = "house");
+          break;
+        }
+        case "Spock": {
+          const result = this.gameRule.find(({ value }) => value === "Spock");
           result.beats.includes(house)
             ? (this.winner = "user")
             : (this.winner = "house");
