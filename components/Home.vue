@@ -150,7 +150,7 @@
       </div>
     </transition>
 
-    <div v-if="gameStarted" class="flex justify-center pt-16">
+    <div v-if="gameStarted" class="flex justify-center pt-9">
       <div
         class="xl:hidden flex flex-col text-center items-center text-white font-bold tracking-wider xl:text-2xl uppercase"
       >
@@ -209,7 +209,7 @@
       </div>
     </div>
 
-    <div class="absolute w-full xl:bottom-10 bottom-10">
+    <div class="absolute w-full xl:bottom-10 bottom-5">
       <div class="flex justify-between xl:px-10 px-5">
         <button
           class="border hover:bg-white hover:text-black transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-200 border-white px-10 py-2 block text-white rounded-lg xl:text-sm text-sm tracking-widest uppercase"
