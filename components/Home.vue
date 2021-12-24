@@ -2,12 +2,15 @@
   <div>
     <!-- Initial the game is set to easy mode ! -->
     <component :is="selectedMode">
+      <!-- i use slot in the child components  -->
       <GameModeAndRuleButtons
         @toggle-modal="showModal"
         @switch-game-mode="changeGameMode(selectButton)"
         :mode="selectButton"
       />
     </component>
+
+    <!-- modal rendered base on selected game mode  -->
     <div v-if="showRules">
       <RuleModal @toggle-modal="showModal" :ruleFor="selectButton" />
     </div>
